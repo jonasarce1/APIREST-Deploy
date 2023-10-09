@@ -4,7 +4,7 @@ const env = await load(); //Cargamos el archivo .env
 const getTemperatura = async (city:string):Promise<number> =>{
     const BASE_URL = "http://api.weatherapi.com/v1";
 
-    const API_KEY = env["API_KEY_WEATHER"];
+    const API_KEY = env["API_KEY_WEATHER"] || Deno.env.get("API_KEY_WEATHER"); //La api key que vamos a usar, la obtenemos del archivo .env
 
     const url = `${BASE_URL}/current.json?key=${API_KEY}&q=${city}`;
 
